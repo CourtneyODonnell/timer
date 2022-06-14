@@ -12,12 +12,16 @@ This will make it beep at:
 10 seconds
 15 seconds
 */
+//variable arguments assigning process args from command line (sliced 2)
 const arguments = process.argv.slice(2).filter(time => !isNaN(time)).filter(time => time >= 0);
+//for each input number when node is called, set timeout to the input number times 1000 (to make it seconds)
 arguments.forEach((time) => {
-  setTimeout
-})
+  setTimeout(() => {
+    process.stdout.write('\x07');
+  }, time * 1000)
+});
 
 
-process.stdout.write('\x07');
+//process.stdout.write('\x07');
 //makes beep sound (note: sound only works in external terminal, not terminal within vscode)
 
